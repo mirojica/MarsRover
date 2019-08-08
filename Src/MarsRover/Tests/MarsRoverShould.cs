@@ -6,11 +6,11 @@ namespace MarsRover.Tests
     public class MarsRoverShould
     {
         [Fact]
-        public void Be_placed_on_a_plateu_of_a_specific_size()
+        public void Be_placed_on_a_plateau_of_a_specific_size()
         {
             var rover = new Rover(5, 5);
 
-            rover.Plateu.Should().BeEquivalentTo(new Plateu(5, 5));
+            rover.Plateau.Should().BeEquivalentTo(new Plateau(5, 5));
         }
 
         [Fact]

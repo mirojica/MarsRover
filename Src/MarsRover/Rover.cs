@@ -1,16 +1,14 @@
-﻿using System;
-
-namespace MarsRover
+﻿namespace MarsRover
 {
     internal class Rover
     {
-        public Rover(int plateuWidth, int plateuHeight)
+        public Rover(int plateauWidth, int plateauHeight)
         {
-            Plateu = new Plateu(plateuWidth, plateuHeight);
+            Plateau = new Plateau(plateauWidth, plateauHeight);
             Position = Position.Start();
         }
 
-        public Plateu Plateu { get; }
+        public Plateau Plateau { get; }
         public Position Position { get; }
 
         internal void Execute(Commands commands)

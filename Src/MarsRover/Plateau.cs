@@ -1,11 +1,11 @@
 ﻿namespace MarsRover
 {
-    internal class Plateu
+    internal class Plateau
     {
         public int Width { get; }
         public int Height { get; }
 
-        public Plateu(int width, int height)
+        public Plateau(int width, int height)
         {
             Width = width;
             Height = height;
