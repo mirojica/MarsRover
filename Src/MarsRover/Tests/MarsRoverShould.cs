@@ -27,10 +27,10 @@ namespace MarsRover.Tests
         [InlineData(2, 0, 'E', "R M M")]
         public void Get_to_a_new_position_after_command(int xPosition, int yPosition, char direction, string receivedCommand)
         {
-            var command = Commands.From(receivedCommand);
+            var commands = Commands.From(receivedCommand);
             var rover = Rover.OnAPlateauSize(6, 6);
 
-            rover.Execute(command);
+            rover.Execute(commands);
 
             rover.Position.Should().BeEquivalentTo(new Position(xPosition, yPosition, direction));
         }
