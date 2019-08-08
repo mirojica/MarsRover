@@ -10,7 +10,7 @@ namespace MarsRover.Tests
         {
             var rover = Rover.OnAPlateauSize(5, 5);
 
-            rover.Plateau.Should().BeEquivalentTo(new Plateau(5, 5));
+            rover.Plateau.Should().BeEquivalentTo(Plateau.Size(5, 5));
         }
 
         [Fact]

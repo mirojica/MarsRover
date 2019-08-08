@@ -7,7 +7,7 @@
 
         private Rover(int plateauWidth, int plateauHeight)
         {
-            Plateau = new Plateau(plateauWidth, plateauHeight);
+            Plateau = Plateau.Size(plateauWidth, plateauHeight);
             Position = Position.Start();
         }
 

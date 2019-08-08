@@ -5,10 +5,12 @@
         public int Width { get; }
         public int Height { get; }
 
-        public Plateau(int width, int height)
+        private Plateau(int width, int height)
         {
             Width = width;
             Height = height;
         }
+
+        internal static Plateau Size(int width, int height) => new Plateau(width, height);
     }
 }
