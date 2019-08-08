@@ -16,21 +16,22 @@ namespace MarsRover
 
             };
 
-        public DirectionCommand(char parsedCommand)
-        {
-            _parsedCommand = parsedCommand;
-        }
+        public DirectionCommand(char parsedCommand) => _parsedCommand = parsedCommand;
 
-        public void Process(Rover rover)
+        public void Process(Rover rover) => rover.ChangeDirectionTo(NewDirectionBasedOnOldFrom(rover));
+
+        private char NewDirectionBasedOnOldFrom(Rover rover)
         {
             if (_parsedCommand == 'R')
             {
-                rover.ChangeDirectionTo(_right[rover.Position.Direction]);
+                return _right[rover.Position.Direction];
             }
             else if (_parsedCommand == 'L')
             {
-                rover.ChangeDirectionTo(_left[rover.Position.Direction]);
+                return _left[rover.Position.Direction];
             }
+
+            return 'N';
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace MarsRover
+﻿using System;
+
+namespace MarsRover
 {
     internal class Rover
     {
@@ -18,6 +20,8 @@
             foreach (var command in commands.Next())
                 command.Process(this);
         }
+
+        internal void Move() => Position.Move();
 
         internal void ChangeDirectionTo(char newDirection) => Position.ChangeDirectionTo(newDirection);
     }

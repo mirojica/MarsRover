@@ -2,8 +2,8 @@
 {
     public class Position
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
         public char Direction { get; private set; }
 
         public Position(int x, int y, char direction)
@@ -13,14 +13,27 @@
             Direction = direction;
         }
 
-        internal static Position Start()
-        {
-            return new Position(0, 0, 'N');
-        }
+        internal static Position Start() => new Position(0, 0, 'N');
 
-        internal void ChangeDirectionTo(char newDirection)
+        internal void ChangeDirectionTo(char newDirection) => Direction = newDirection;
+
+        internal void Move()
         {
-            Direction = newDirection;
+            switch (Direction)
+            {
+                case 'N':
+                    Y++;
+                    break;
+                case 'S':
+                    Y--;
+                    break;
+                case 'W':
+                    X--;
+                    break;
+                case 'E':
+                    X++;
+                    break;
+            }
         }
     }
 }
