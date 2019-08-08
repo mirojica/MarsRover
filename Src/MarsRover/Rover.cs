@@ -2,14 +2,16 @@
 {
     internal class Rover
     {
-        public Rover(int plateauWidth, int plateauHeight)
+        public Plateau Plateau { get; }
+        public Position Position { get; }
+
+        private Rover(int plateauWidth, int plateauHeight)
         {
             Plateau = new Plateau(plateauWidth, plateauHeight);
             Position = Position.Start();
         }
 
-        public Plateau Plateau { get; }
-        public Position Position { get; }
+        internal static Rover OnAPlateauSize(int plateauWidth, int plateauHeight) => new Rover(plateauWidth, plateauHeight);
 
         internal void Execute(Commands commands)
         {
@@ -17,9 +19,6 @@
                 command.Process(this);
         }
 
-        internal void ChangeDirectionTo(char newDirection)
-        {
-            Position.ChangeDirectionTo(newDirection);
-        }
+        internal void ChangeDirectionTo(char newDirection) => Position.ChangeDirectionTo(newDirection);
     }
 }

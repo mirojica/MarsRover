@@ -8,7 +8,7 @@ namespace MarsRover.Tests
         [Fact]
         public void Be_placed_on_a_plateau_of_a_specific_size()
         {
-            var rover = new Rover(5, 5);
+            var rover = Rover.OnAPlateauSize(5, 5);
 
             rover.Plateau.Should().BeEquivalentTo(new Plateau(5, 5));
         }
@@ -16,7 +16,7 @@ namespace MarsRover.Tests
         [Fact]
         public void Be_placed_on_a_starting_position_at_a_begining()
         {
-            var rover = new Rover(5, 5);
+            var rover = Rover.OnAPlateauSize(5, 5);
 
             rover.Position.Should().BeEquivalentTo(new Position(0, 0, 'N'));
         }
@@ -28,7 +28,7 @@ namespace MarsRover.Tests
         public void Get_to_a_new_position_after_command(int xPosition, int yPosition, char direction, string receivedCommand)
         {
             var command = Commands.From(receivedCommand);
-            var rover = new Rover(6, 6);
+            var rover = Rover.OnAPlateauSize(6, 6);
 
             rover.Execute(command);
 
