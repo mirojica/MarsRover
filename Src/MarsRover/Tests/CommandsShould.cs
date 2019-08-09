@@ -26,7 +26,17 @@ namespace MarsRover.Tests
         {
             var commands = Commands.From(validCommand);
 
-            commands.Should().NotBeNull();
+            commands.All().Count.Should().Be(3);
+        }
+
+        [Fact]
+        public void Create_Commands()
+        {
+            var commands = Commands.From("RML").All();
+
+            commands[0].Should().BeOfType(typeof(DirectionCommand));
+            commands[1].Should().BeOfType(typeof(MoveCommand));
+            commands[2].Should().BeOfType(typeof(DirectionCommand));
         }
     }
 }

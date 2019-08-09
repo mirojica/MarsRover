@@ -19,13 +19,7 @@ namespace MarsRover
             return new Commands(commands);
         }
 
-        internal IEnumerable<IRoverCommand> Next()
-        {
-            foreach (var command in _commands)
-            {
-                yield return command;
-            }
-        }
+        internal IList<IRoverCommand> All() => _commands;
 
         private static void AssertThatReceivedCommandIsValid(string command)
         {

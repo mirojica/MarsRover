@@ -15,7 +15,7 @@
 
         internal void Execute(Commands commands)
         {
-            foreach (var command in commands.Next())
+            foreach (var command in commands.All())
                 command.Process(this);
         }
 
