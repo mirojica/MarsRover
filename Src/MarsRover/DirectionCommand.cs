@@ -12,7 +12,7 @@ namespace MarsRover
             };
         private IDictionary<char, char> _left = new Dictionary<char, char>
             {
-                { 'N', 'W' }, { 'W', 's'}, { 'E', 'N' }, { 'S', 'E' }
+                { 'N', 'W' }, { 'W', 'S'}, { 'E', 'N' }, { 'S', 'E' }
 
             };
 

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Xunit;
 
 namespace MarsRover.Tests
@@ -38,6 +39,20 @@ namespace MarsRover.Tests
                 .WithY(yPosition)
                 .WithDirection(direction)
                 .Build());
+        }
+
+        [Theory]
+        [InlineData("LML")]
+        [InlineData("RRM")]
+        [InlineData("LLM")]
+        public void Indicate_that_sent_command_will_take_it_out_of_plateau(string outOfPlateauCommand)
+        {
+            var commands = Commands.From(outOfPlateauCommand);
+            var rover = Rover.OnAPlateauSize(6, 6);
+
+            Action action = () => rover.Execute(commands);
+
+            action.Should().Throw<OutOfPlateauException>();
         }
 
         private PositionBuilder APosition => new PositionBuilder();

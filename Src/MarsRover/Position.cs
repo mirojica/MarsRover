@@ -36,6 +36,9 @@
                     break;
             }
 
+            if (newX < 0 || newY < 0)
+                throw new OutOfPlateauException();
+
             return new Position(newX, newY, Direction);
         }
     }
