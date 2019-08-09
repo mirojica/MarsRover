@@ -1,6 +1,6 @@
 ﻿namespace MarsRover
 {
-    internal class PositionCommand : IRoverCommand
+    internal class MoveCommand : IRoverCommand
     {
         public void Process(Rover rover) => rover.Move();
     }

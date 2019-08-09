@@ -40,7 +40,7 @@ namespace MarsRover
         {
             if (parsedCommand == 'L' || parsedCommand == 'R')
                 return new DirectionCommand(parsedCommand);
-            return new PositionCommand();
+            return new MoveCommand();
         }
     }
 
