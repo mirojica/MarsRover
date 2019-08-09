@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MarsRover
 {
@@ -11,12 +13,8 @@ namespace MarsRover
 
         internal static Commands From(string command)
         {
-            var commands = new List<IRoverCommand>();
-
-            ParseCommandsFrom(command).ForEach(parsedCommand =>
-            {
-                commands.Add(CreateACommandBasedOn(parsedCommand));
-            });
+            AssertThatReceivedCommandIsValid(command);
+            var commands = ParseCommandsFrom(command).Select(CreateACommandBasedOnParsedCommand).ToList();
 
             return new Commands(commands);
         }
@@ -29,12 +27,16 @@ namespace MarsRover
             }
         }
 
-        private static List<char> ParseCommandsFrom(string command)
+        private static void AssertThatReceivedCommandIsValid(string command)
         {
-            return command.Replace(" ", "").ToList();
+            var trimedCommand = command.Replace(" ", "");
+            if (!Regex.IsMatch(trimedCommand, @"^[LMR]{3}$"))
+                throw new ArgumentException("Invalid command.");
         }
 
-        private static IRoverCommand CreateACommandBasedOn(char parsedCommand)
+        private static List<char> ParseCommandsFrom(string command) => command.Replace(" ", "").ToList();
+
+        private static IRoverCommand CreateACommandBasedOnParsedCommand(char parsedCommand)
         {
             if (parsedCommand == 'L' || parsedCommand == 'R')
                 return new DirectionCommand(parsedCommand);
