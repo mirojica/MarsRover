@@ -18,7 +18,7 @@ namespace MarsRover.Tests
         {
             var rover = Rover.OnAPlateauSize(5, 5);
 
-            rover.Position.Should().BeEquivalentTo(new Position(0, 0, 'N'));
+            rover.Position.Should().BeEquivalentTo(Position.Start());
         }
 
         [Theory]
@@ -32,7 +32,14 @@ namespace MarsRover.Tests
 
             rover.Execute(commands);
 
-            rover.Position.Should().BeEquivalentTo(new Position(xPosition, yPosition, direction));
+            rover.Position.Should().BeEquivalentTo(
+                APosition
+                .WithX(xPosition)
+                .WithY(yPosition)
+                .WithDirection(direction)
+                .Build());
         }
+
+        private PositionBuilder APosition => new PositionBuilder();
     }
 }
