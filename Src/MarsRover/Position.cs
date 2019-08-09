@@ -15,25 +15,28 @@
 
         internal static Position Start() => new Position(0, 0, 'N');
 
-        internal void ChangeDirectionTo(char newDirection) => Direction = newDirection;
+        internal Position ChangeDirectionTo(char newDirection) => new Position(X, Y, newDirection);
 
-        internal void Move()
+        internal Position Move()
         {
+            int newX = X, newY = Y;
             switch (Direction)
             {
                 case 'N':
-                    Y++;
+                    newY++;
                     break;
                 case 'S':
-                    Y--;
+                    newY--;
                     break;
                 case 'W':
-                    X--;
+                    newX--;
                     break;
                 case 'E':
-                    X++;
+                    newX++;
                     break;
             }
+
+            return new Position(newX, newY, Direction);
         }
     }
 }

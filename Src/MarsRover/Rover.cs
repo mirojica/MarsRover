@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace MarsRover
+﻿namespace MarsRover
 {
     internal class Rover
     {
         public Plateau Plateau { get; }
-        public Position Position { get; }
+        public Position Position { get; private set; }
 
         private Rover(int plateauWidth, int plateauHeight)
         {
@@ -21,8 +19,8 @@ namespace MarsRover
                 command.Process(this);
         }
 
-        internal void Move() => Position.Move();
+        internal void Move() => Position = Position.Move();
 
-        internal void ChangeDirectionTo(char newDirection) => Position.ChangeDirectionTo(newDirection);
+        internal void ChangeDirectionTo(char newDirection) => Position = Position.ChangeDirectionTo(newDirection);
     }
 }
