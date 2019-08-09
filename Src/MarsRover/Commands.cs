@@ -12,13 +12,12 @@ namespace MarsRover
         internal static Commands From(string command)
         {
             var commands = new List<IRoverCommand>();
-            command.Replace(" ", "").ToList().ForEach(parsedCommand =>
+
+            ParseCommandsFrom(command).ForEach(parsedCommand =>
             {
-                if (parsedCommand == 'L' || parsedCommand == 'R')
-                    commands.Add(new DirectionCommand(parsedCommand));
-                else
-                    commands.Add(new PositionCommand());
+                commands.Add(CreateACommandBasedOn(parsedCommand));
             });
+
             return new Commands(commands);
         }
 
@@ -28,6 +27,18 @@ namespace MarsRover
             {
                 yield return command;
             }
+        }
+
+        private static List<char> ParseCommandsFrom(string command)
+        {
+            return command.Replace(" ", "").ToList();
+        }
+
+        private static IRoverCommand CreateACommandBasedOn(char parsedCommand)
+        {
+            if (parsedCommand == 'L' || parsedCommand == 'R')
+                return new DirectionCommand(parsedCommand);
+            return new PositionCommand();
         }
     }
 
