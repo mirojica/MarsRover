@@ -4,12 +4,12 @@ namespace MarsRover
 {
     public class Position
     {
-        private IDictionary<char, char> _right = new Dictionary<char, char>
+        private IDictionary<char, char> _rightOf = new Dictionary<char, char>
             {
                 { 'N', 'E' }, { 'W', 'N'}, { 'E', 'S' }, { 'S', 'W' }
 
             };
-        private IDictionary<char, char> _left = new Dictionary<char, char>
+        private IDictionary<char, char> _leftOf = new Dictionary<char, char>
             {
                 { 'N', 'W' }, { 'W', 'S'}, { 'E', 'N' }, { 'S', 'E' }
 
@@ -28,9 +28,9 @@ namespace MarsRover
 
         internal static Position Start() => new Position(0, 0, 'N');
 
-        internal Position ToRight() => new Position(X, Y, _right[Direction]);
+        internal Position ToRight() => new Position(X, Y, _rightOf[Direction]);
 
-        internal Position ToLeft() => new Position(X, Y, _left[Direction]);
+        internal Position ToLeft() => new Position(X, Y, _leftOf[Direction]);
 
         internal Position Move()
         {
