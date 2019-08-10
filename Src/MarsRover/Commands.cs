@@ -32,8 +32,10 @@ namespace MarsRover
 
         private static IRoverCommand CreateACommandBasedOnParsedCommand(char parsedCommand)
         {
-            if (parsedCommand == 'L' || parsedCommand == 'R')
-                return new DirectionCommand(parsedCommand);
+            if (parsedCommand == 'L')
+                return new LeftDirectionCommand();
+            if (parsedCommand == 'R')
+                return new RightDirectionCommand();
             return new MoveCommand();
         }
     }
