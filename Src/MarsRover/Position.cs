@@ -1,7 +1,20 @@
-﻿namespace MarsRover
+﻿using System.Collections.Generic;
+
+namespace MarsRover
 {
     public class Position
     {
+        private IDictionary<char, char> _right = new Dictionary<char, char>
+            {
+                { 'N', 'E' }, { 'W', 'N'}, { 'E', 'S' }, { 'S', 'W' }
+
+            };
+        private IDictionary<char, char> _left = new Dictionary<char, char>
+            {
+                { 'N', 'W' }, { 'W', 'S'}, { 'E', 'N' }, { 'S', 'E' }
+
+            };
+
         public int X { get; private set; }
         public int Y { get; private set; }
         public char Direction { get; private set; }
@@ -15,7 +28,9 @@
 
         internal static Position Start() => new Position(0, 0, 'N');
 
-        internal Position ChangeDirectionTo(char newDirection) => new Position(X, Y, newDirection);
+        internal Position ToRight() => new Position(X, Y, _right[Direction]);
+
+        internal Position ToLeft() => new Position(X, Y, _left[Direction]);
 
         internal Position Move()
         {

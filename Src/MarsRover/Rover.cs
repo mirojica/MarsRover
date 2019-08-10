@@ -21,6 +21,8 @@
 
         internal void Move() => Position = Position.Move();
 
-        internal void ChangeDirectionTo(char newDirection) => Position = Position.ChangeDirectionTo(newDirection);
+        internal void TurnRight() => Position = Position.ToRight();
+
+        internal void TurnLeft() => Position = Position.ToLeft();
     }
 }
